@@ -1,8 +1,3 @@
-resource "random_pet" "file_storage" {
-  length = 2
-}
-
-
 data "tencentcloud_user_info" "info" {}
 
 locals {
@@ -11,13 +6,12 @@ locals {
 
 resource "tencentcloud_cos_bucket" "file_storage" {
   bucket = "bucket-with-cors-${local.app_id}"
-  acl    = "public-read-write"
+  acl    = "private"
 
   cors_rules {
     allowed_origins = ["*"]
-    allowed_methods = ["PUT", "POST"]
+    allowed_methods = ["HEAD", "PUT", "GET"]
     allowed_headers = ["*"]
     max_age_seconds = 300
-    expose_headers  = ["Etag"]
   }
 }
