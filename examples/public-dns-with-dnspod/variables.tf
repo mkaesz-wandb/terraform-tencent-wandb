@@ -1,11 +1,11 @@
 variable "region" {
   type        = string
-  description = "Google region"
+  description = " region"
 }
 
 variable "zone" {
   type        = string
-  description = "Google zone"
+  description = " zone"
 }
 
 variable "namespace" {

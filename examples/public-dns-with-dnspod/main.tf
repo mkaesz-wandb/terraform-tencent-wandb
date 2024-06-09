@@ -25,6 +25,7 @@ module "wandb" {
   license               = var.license
   domain_name           = var.domain_name
   subdomain             = var.subdomain
+  region                = var.region
 }
 
 output "url" {

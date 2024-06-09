@@ -3,7 +3,7 @@ output "kubeconfig" {
   sensitive = true
 }
 
-output "cluster_ip" {
+output "cluster_endpoint" {
   sensitive = true
   value     = tencentcloud_kubernetes_cluster.default.pgw_endpoint
 }
