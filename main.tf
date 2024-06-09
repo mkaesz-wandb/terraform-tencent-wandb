@@ -1,15 +1,3 @@
-terraform {
-  required_providers {
-    tencentcloud = {
-      source = "tencentcloudstack/tencentcloud"
-    }
-  }
-}
-
-provider "tencentcloud" {
-  region = var.region
-}
-
 module "storage" {
   source    = "./modules/storage"
   namespace = var.namespace
@@ -30,6 +18,13 @@ module "redis" {
 module "database" {
   source              = "./modules/database"
   namespace           = var.namespace
+  vpc           = module.networking.vpc
+  subnet    =  module.networking.subnet
+}
+
+module "app_tke" {
+  source                   = "./modules/app_tke"
+  namespace                = var.namespace
   vpc           = module.networking.vpc
   subnet    =  module.networking.subnet
 }
